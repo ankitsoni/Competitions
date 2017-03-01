@@ -17,7 +17,7 @@ public class BearandSteadyGene {
     }
 
     static int solve(String s){
-        int ac,cc,gc,tc,normal;
+        int ac=0,cc=0,gc=0,tc=0,normal=0;
         normal = (s.length()+1)/4;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
