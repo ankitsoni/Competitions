@@ -28,42 +28,25 @@ public class A1 {
         String newS = null;
         if (startIndex < endIndex)
             newS = string.substring(startIndex, endIndex + 1);
-        int[] a = new int[endIndex - startIndex + 1];
-        int[] b = new int[endIndex - startIndex + 1];
-        int[] c = new int[endIndex - startIndex + 1];
-        c[newS.length() - 1]++;
+        else
+            return 0;
+        int answer = 0;
+        int aCount = 0, lastB = 0, cCount = 0;
+        cCount++;
         for (int i = newS.length() - 2; i >= 0; i--) { // last is definate c
             switch (newS.charAt(i)) {
                 case 'a':
-                    a[i] = a[i + 1] + 1;
-                    b[i] = b[i + 1];
-                    c[i] = c[i + 1];
+                    answer = lastB * aCount + aCount + 1; // lastB + pattern with past + pattern with current
+                    aCount = answer;
                     break;
                 case 'b':
-                    a[i] = a[i + 1];
-                    b[i] = b[i + 1] + 1;
-                    c[i] = c[i + 1];
+                    lastB = (cCount * (cCount + 1) / 2) + lastB;
                     break;
                 case 'c':
-                    a[i] = a[i + 1];
-                    b[i] = b[i + 1];
-                    c[i] = c[i + 1] + 1;
+                    cCount++;
                     break;
             }
         }
-        int lastA = 0;
-        int answer = 0;
-        int lastCount = 0;
-        int count = 0;
-        for (int i = a.length - 1; i >= 0; i--) {
-            if (a[i] != lastA) {
-                count = a[i] * b[i] * c[i];
-                lastA = a[i];
-                answer = count - lastCount;
-                lastCount = answer;
-            }
-        }
-
         return answer;
     }
 

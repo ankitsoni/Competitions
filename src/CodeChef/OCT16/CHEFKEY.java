@@ -1,7 +1,5 @@
 package CodeChef.OCT16;
 
-import Library.Generator;
-
 import java.io.*;
 import java.util.*;
 import java.util.StringTokenizer;
